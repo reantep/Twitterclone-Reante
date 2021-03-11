@@ -4,4 +4,4 @@ from .models import tweet
 class PictureForm(forms.ModelForm):
     class Meta:
         model = tweet
-        fields = '__all__'
+        fields = ['name', 'body', 'image', 'like_count', 'created_at', 'updated_at' ]

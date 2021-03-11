@@ -12,15 +12,20 @@
     <h2>Upload image</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-
+        {{ form.name }}
+        {{ form.body }}
         {{ form.image }}
-   
-    <div>
-        <br>
-        <input type="submit" value= "Upload image" >
-    </div>
+        {{ form.like_count }}
+        {{ form.created_at }}
+        {{ form.updated_at }}
 
+        <div>
+            <br>
+            <input type="submit" value= "Upload image" >
+        </div>
     </form>
+
+    
 
 </body>
 </html> 
