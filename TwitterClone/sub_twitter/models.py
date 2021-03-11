@@ -2,7 +2,7 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 
 # Create your models here.
-class tweet(models.Models):
+class tweet(models.Model):
     name = models.CharField(max_length=14)
     body = models.CharField(max_length=140)
     image = CloudinaryField('image')
