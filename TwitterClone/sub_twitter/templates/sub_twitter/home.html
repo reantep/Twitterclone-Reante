@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <title>Reante-Twitter</title>
+</head>
+
+<body class="home">
+    <div class="container">
+
+<div class="main"></div>
+    <div class="twitter-header">
+        <img src="{% static '/img/Tech-is-logo.png/' %}" class="header-icon">
+        <h2>Home</h2>
+    </div>
+
+    <div class="user-post">
+        <div class="user-icon">
+            <!-- <img src="{% static 'img\PROFILE.JPG' %}" max_width=100px max_height=100px> -->
+        </div>
+        <div class="tweet-input">
+            <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="user-name" placeholder="Your name">{{ form.name }}</div>
+                    <div class="tweet-body" placeholder="Whats up?">{{ form.body }}</div>
+                    <div class="tweet-bottom">
+                        <div class="mb-0">
+
+                            <div class="tweet-image" >{{ form.image }}</div>
+
+                        </div>
+                        
+                        <button class="tweet-btn" type="submit" value= "tweet" >
+
+                    </div>
+            </form>               
+        </div>
+    </div>
+
+        <div class="ditch"></div>
+
+                                
+
+        <div class="Timeline">
+                    {% for tweet in tweets %}
+            <div class="timeline-name">{{ tweet.name }}</div>
+            <img class="timeline-img" src="{{ tweet.image.url }}" alt="" width="300px">
+            <div class="timeline-body">{{ tweet.body }}</div>
+            <div class="likes">{{ tweet.like_count}}</div>
+            <div class="post-time">{{ tweet.created_at}}</div>
+                    {% endfor %}
+        </div>    
+            
+</div>
+
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+html,
+body {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    padding: 0;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* .main {
+    width: 100%;
+    max-width: 600px;
+    border-left: 1px solid rgb(235, 238, 240);
+    border-right: 1px solid rgb(235, 238, 240);
+} */
+
+/*
+main
+*************************/
+.main {
+    text-align: left;
+}
+
+
+.main .twitter-header {
+    display: flex;
+    justify-content: left;
+    align-items:center;
+}
+
+.main .twitter-header .header-icon {
+    width: 10px;
+    height: 10px;
+    margin-right: 20px;
+}
+
+.main .main-header h2 {
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 0;
+    font-weight: bold;
+
+}
+
+
+
+

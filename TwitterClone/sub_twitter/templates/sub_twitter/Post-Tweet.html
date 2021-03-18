@@ -9,19 +9,17 @@
 <body>
     {% load cloudinary %}
 
-    <h2>Upload image</h2>
+    <h2>Upload post</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.name }}
         {{ form.body }}
         {{ form.image }}
         {{ form.like_count }}
-        {{ form.created_at }}
-        {{ form.updated_at }}
 
         <div>
             <br>
-            <input type="submit" value= "Upload image" >
+            <input type="submit" value= "tweet" >
         </div>
     </form>
 

@@ -20,7 +20,6 @@ from sub_twitter import views
 urlpatterns = [
     path('sub_twitter/', include('sub_twitter.urls')),
     path('admin/', admin.site.urls),
-    path('', views.index, name= 'index'),
-    path('upload/' , views.loadPicture, name = 'upload'),
-
-]
+    path('', views.home, name= 'home'),
+    path('Post-Tweet/' , views.loadPicture, name = 'Post-Tweet'),
+]   
