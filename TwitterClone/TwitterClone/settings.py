@@ -85,9 +85,9 @@ WSGI_APPLICATION = 'TwitterClone.wsgi.application'
 DATABASES = { # Edit the DATABASES part to the following
     'default': {
         'ENGINE': 'django.db.backends.mysql', # We set the engine to MySQL
-        'NAME': 'twitterdjango', # Your database name
+        'NAME': 'twitter', # Your database name
         'USER': 'root', # root is the default user for MySQL
-        'PASSWORD': 'Josiah2016Patt', # Password is blank by default
+        'PASSWORD': 'Josiah2016patt', # Password is blank by default
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
