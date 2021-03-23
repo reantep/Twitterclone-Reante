@@ -5,20 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    {% load cloudinary %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
 
     <title>Reante-Twitter</title>
 </head>
 
 <body class="home">
+<div class="twitter-header">
+    <img src="{% static '\img\favicon.png' %}" class="header-icon" type="image/png" sizes="96x96">
+    <h2>Home</h2>
+</div>
+
     <div class="container">
 
 <div class="main"></div>
-    <div class="twitter-header">
-        <img src="{% static '/img/Tech-is-logo.png/' %}" class="header-icon">
-        <h2>Home</h2>
-    </div>
-
+   
     <div class="user-post">
         <div class="user-icon">
             <!-- <img src="{% static 'img\PROFILE.JPG' %}" max_width=100px max_height=100px> -->
@@ -26,7 +28,7 @@
         <div class="tweet-input">
             <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <div class="user-name" placeholder="Your name">{{ form.name }}</div>
+                    <div class="user-name" >{{ form.name }}</div>
                     <div class="tweet-body" placeholder="Whats up?">{{ form.body }}</div>
                     <div class="tweet-bottom">
                         <div class="mb-0">
@@ -53,6 +55,8 @@
             <div class="timeline-body">{{ tweet.body }}</div>
             <div class="likes">{{ tweet.like_count}}</div>
             <div class="post-time">{{ tweet.created_at}}</div>
+            <a href='/Edit-Tweet/{{ tweet.id }}/'><button class="edit-tweet-button" type="menu">Edit</button></a>
+
                     {% endfor %}
         </div>    
             

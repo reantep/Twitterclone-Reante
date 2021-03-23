@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name = 'home'),
-    #path('upload/' , views.loadPicture, name = 'upload'),
+    path('edit-tweet/<int:id>/', views.edit_tweet, name='edit-tweet'),
+
 ]

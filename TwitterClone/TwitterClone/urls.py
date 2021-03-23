@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from sub_twitter import views
+from django.conf.urls import url
 
 urlpatterns = [
     path('sub_twitter/', include('sub_twitter.urls')),
     path('admin/', admin.site.urls),
     path('', views.home, name= 'home'),
     path('Post-Tweet/' , views.loadPicture, name = 'Post-Tweet'),
+    path('Edit-Tweet/<int:id>/', views.edit_tweet, name ="Edit-Tweet"),
+    # url(r'^edit_tweet\(?P<id>d+/$', views.edit_tweet, name='edit_tweet')
 ]   

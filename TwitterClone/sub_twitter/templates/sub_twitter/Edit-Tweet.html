@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    {% load cloudinary %}
+    <title>Document</title>
+</head>
+<body>
+    <div class="tweet-detail">
+    {% for id in tweets %}
+        {{ tweet.id }}
+    <div class="timeline-name">{{ tweet.name }}</div>
+    <img class="timeline-img" src="{{ tweet.image.url }}" alt="" width="300px">
+    <div class="timeline-body">{{ tweet.body }}</div>
+    {% endfor %}    
+    </div>
+</body>
+</html>

@@ -5,3 +5,5 @@ class PictureForm(forms.ModelForm):
     class Meta:
         model = tweet
         fields = ['name','image', 'body' ]
+
+        
