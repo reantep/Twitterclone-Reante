@@ -31,23 +31,46 @@ def loadPicture(request):
     ctx = {'form': form}
     return render(request, 'sub_twitter/Post-tweet.html', ctx )
 
-def edit_tweet(request, id):
+def edit_tweet(request, id ):
     template = 'sub_twitter/Edit-Tweet.html'
-    post = get_object_or_404(tweet, pk=id)
+    # post = get_object_or_404(tweet, pk=id)
+    tweets = tweet.objects.get(id=id)
     if request.method == "POST":
-        form = PictureForm(request.POST, request.FILES, instance=post)
+        form = PictureForm(request.POST, request.FILES, instance=tweets)
         try:
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Your tweet has been updated!')
-        except Exception as e :
-            messages.warning(request,'Your post was not saved:'.format(e))
+                return redirect('home')
+        except Exception as e:
+            messages.warning(request,'Your post was not saved: Error {}'.format(e))
     else:
-        form = PictureForm(instance=post)
+        form = PictureForm(instance=tweets)
+        ctx = {
+            'form': form,
+            'tweets': tweets,
+            # 'post': post,
+            }
+        return render(request,template,ctx)
+
+def delete_tweet(request, id ):
+    template = 'sub_twitter/Delete.html'
+    tweets = tweet.objects.get(id=id)
+
+    try:
+        if request.method == 'POST':
+            form = PictureForm(request.POST, instance=tweets)
+            tweets.delete()
+            messages.success(request, 'Tweet deleted!')
+            return redirect('home')
+        
+        else:
+            form = PictureForm(instance=tweets)   
+    except Exception as e:
+        messages.warning(request,'Your tweet was not deleted. :{}'.format(e)) 
+       
     ctx = {
         'form': form,
-        'tweet': tweet,
-        'post': post,
+        'tweets': tweets,
     }
-
-    return render(request,template, ctx)
+    return render(request,template,ctx)

@@ -1,21 +1,30 @@
+{% load static %}
+{% load cloudinary %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    {% load cloudinary %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- popover -->
+    <link rel="stylesheet" href="{% static 'JS/bootstrap.bundle.min.js' %}">
+
+    <!-- bootstrap/css -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <nav class="navbar navbar-dark bg-dark" >
+        <a class="navbar-brand" href="#">
+          <img src="{% static '\img\favicon.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+          Home
+        </a>
+      </nav>
+
 
     <title>Reante-Twitter</title>
+
 </head>
 
-<body class="home">
-<div class="twitter-header">
-    <img src="{% static '\img\favicon.png' %}" class="header-icon" type="image/png" sizes="96x96">
-    <h2>Home</h2>
-</div>
+<body class="home" style="background-color:rgba(26, 91, 121, .5);">
 
     <div class="container">
 
@@ -25,39 +34,52 @@
         <div class="user-icon">
             <!-- <img src="{% static 'img\PROFILE.JPG' %}" max_width=100px max_height=100px> -->
         </div>
-        <div class="tweet-input">
+        <div class="offset-3 col-md-6 span">
             <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <div class="user-name" >{{ form.name }}</div>
-                    <div class="tweet-body" placeholder="Whats up?">{{ form.body }}</div>
-                    <div class="tweet-bottom">
-                        <div class="mb-0">
+                            {% csrf_token %}
 
-                            <div class="tweet-image" >{{ form.image }}</div>
+                          <div class="mt-4 mb-2">
+                            {{ form.name }} 
+                          </div>
+                      
+                             {{ form.body }}
+                                           
+                          <div class="mb-1 mt-2">
 
-                        </div>
+                            {{ form.image }}
+
+                          </div>
                         
-                        <button class="tweet-btn" type="submit" value= "tweet" >
+                        <input class="btn btn-primary mb-4" type="submit" value= "Tweet" >
 
                     </div>
             </form>               
         </div>
     </div>
 
-        <div class="ditch"></div>
+        <div class="offset-3 col-md-6">
+                      {% for tweet in tweets %}
+                      <div class="card mb-3 mt-3 form-control  ">
+                        <div class="card-body">
+                          <img src="{% static '\img\IMG_0054.JPG' %}" class="rounded-circle" width="69" height="68">
 
-                                
-
-        <div class="Timeline">
-                    {% for tweet in tweets %}
-            <div class="timeline-name">{{ tweet.name }}</div>
-            <img class="timeline-img" src="{{ tweet.image.url }}" alt="" width="300px">
-            <div class="timeline-body">{{ tweet.body }}</div>
-            <div class="likes">{{ tweet.like_count}}</div>
-            <div class="post-time">{{ tweet.created_at}}</div>
-            <a href='/Edit-Tweet/{{ tweet.id }}/'><button class="edit-tweet-button" type="menu">Edit</button></a>
-
-                    {% endfor %}
+                          <h5 class="card-title">{{ tweet.name }}</h5>
+                          <p class="card-text">{{ tweet.body }}</p>
+                          <p class="card-text"><small class="text-muted">{{ tweet.created_at}}</small></p>
+                          <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="/Edit-Tweet/{{ tweet.id }}/">Edit</a>
+                              <a class="dropdown-item" href="/Delete/{{ tweet.id }}/">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                        <img src="{{ tweet.image.url }}" width="100px" class="card-img-top">
+                        <div class="likes">{{ tweet.like_count}}</div>
+                      </div>
+                        {% endfor %}
+          </div>
         </div>    
             
 </div>
@@ -66,6 +88,11 @@
 
 
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </body>
 </html>
