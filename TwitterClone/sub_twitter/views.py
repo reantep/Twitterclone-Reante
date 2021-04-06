@@ -4,7 +4,6 @@ from .models import tweet
 from .forms import PictureForm
 import datetime
 from django.contrib import messages
-
 from cloudinary.forms import cl_init_js_callbacks
 # Create your views here.
 
