@@ -6,18 +6,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- popover -->
-    <link rel="stylesheet" href="{% static 'JS/bootstrap.bundle.min.js' %}">
-
+    <link rel="icon" href="{% static '/img/droplet.svg' %}">
     <!-- bootstrap/css -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
-    <nav class="navbar navbar-dark bg-dark" >
-        <a class="navbar-brand" href="#">
-          <img src="{% static '\img\favicon.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
-          Home
-        </a>
-      </nav>
+    <!--FontAwesome -->
+    <script src="https://kit.fontawesome.com/da8acf5d2d.js" crossorigin="anonymous"></script>
 
 
     <title>Reante-Twitter</title>
@@ -25,11 +19,17 @@
 </head>
 
 <body class="home" style="background-color:rgba(26, 91, 121, .5);">
-
+  <nav class="navbar navbar-dark bg-dark" >
+    <a class="navbar-brand" href="#">
+      <img src="{% static '\img\favicon.png' %}" width="40" height="40" class="d-inline-block align-mid" alt="">
+      Home
+    </a>
+  </nav>
+     
     <div class="container">
 
 <div class="main"></div>
-   
+
     <div class="user-post">
         <div class="user-icon">
             <!-- <img src="{% static 'img\PROFILE.JPG' %}" max_width=100px max_height=100px> -->
@@ -57,16 +57,11 @@
         </div>
     </div>
 
-        <div class="offset-3 col-md-6">
+        <div class="offset-4 col-md-4">
                       {% for tweet in tweets %}
                       <div class="card mb-3 mt-3 form-control  ">
                         <div class="card-body">
-                          <img src="{% static '\img\IMG_0054.JPG' %}" class="rounded-circle" width="69" height="68">
-
-                          <h5 class="card-title">{{ tweet.name }}</h5>
-                          <p class="card-text">{{ tweet.body }}</p>
-                          <p class="card-text"><small class="text-muted">{{ tweet.created_at}}</small></p>
-                          <div class="dropdown">
+                          <div class="dropdown float-end">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -74,18 +69,54 @@
                               <a class="dropdown-item" href="/Delete/{{ tweet.id }}/">Delete</a>
                             </div>
                           </div>
+                          <img src="{% static 'img\profile image.png' %}" class="rounded-circle" width="69" height="68">
+
+                          <h5 class="card-title">{{ tweet.name }}</h5>
+                          <p class="card-text">{{ tweet.body }}</p>
+                          <p class="card-text"><small class="text-muted">{{ tweet.created_at}}</small></p>
+                          
                         </div>
                         <img src="{{ tweet.image.url }}" width="100px" class="card-img-top">
                         <div class="likes">{{ tweet.like_count}}</div>
+                        <span><i class="far fa-heart" ></i> 
+                        </span>  
                       </div>
+                      
                         {% endfor %}
+                      <div>
+         
+                      </div>
+
+
           </div>
         </div>    
             
 </div>
 
 </div>
+<script>
+                          
+  var btn = document.getElementsByClassName('fa-heart');
+  Array.from(btn).forEach(element => {
+    console.log('adding eventlisteners')
+    element.addEventListener('click', function() {
+      if(this.classList.contains("far")){
+        console.log('adding if')
+        this.classList.remove("far");
+        this.classList.add("fas");
 
+       }else{
+         console.log('adding else')
+            this.classList.remove("fas");
+            this.classList.add("far");
+       }
+
+      
+    })});
+    
+  
+ 
+</script>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
