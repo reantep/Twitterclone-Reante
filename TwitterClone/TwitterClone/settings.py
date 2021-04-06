@@ -35,8 +35,7 @@ ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.com','localhost']
 # Application definition
 
 INSTALLED_APPS = [
-    'sub_twitter.apps',
-    'sub_twitter.apps.SubTwitterConfig',
+    'sub_twitter',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -62,7 +61,7 @@ ROOT_URLCONF = 'TwitterClone.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [BASE_DIR/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
