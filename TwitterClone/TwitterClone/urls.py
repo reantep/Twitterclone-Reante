@@ -21,7 +21,6 @@ from django.conf.urls import url
 urlpatterns = [
     path('sub_twitter/', include('sub_twitter.urls')),
     path('admin/', admin.site.urls),
-    path('', views.home, name= 'home'),
     path('home/', views.home, name= 'home'),
     path('Post-Tweet/' , views.loadPicture, name = 'Post-Tweet'),
     path('Edit-Tweet/<int:id>/', views.edit_tweet, name ="Edit-Tweet"),
