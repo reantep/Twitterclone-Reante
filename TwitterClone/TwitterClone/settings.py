@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '2z9_7_-0-u)wm5jl_)!=egk+@#@hja3@+6g#uo(exv3j%j@t)@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -81,17 +81,16 @@ WSGI_APPLICATION = 'TwitterClone.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = { # Edit the DATABASES part to the following
+DATABASES = {  # Edit the DATABASES part to the following
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # We set the engine to MySQL
-        'NAME': 'twitter', # Your database name
-        'USER': 'root', # root is the default user for MySQL
-        'PASSWORD': 'Josiah2016patt', # Password is blank by default
+        'ENGINE': 'django.db.backends.mysql',  # We set the engine to MySQL
+        'NAME': 'twitter',  # Your database name
+        'USER': 'root',  # root is the default user for MySQL
+        'PASSWORD': '',  # Password is blank by default
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
-
 
 
 # Password validation
@@ -131,14 +130,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = "sub_twitter/static"
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static')
-]
+STATIC_ROOT = "static"
 
-cloudinary.config( 
-  cloud_name = "rp1994", 
-  api_key = "956419556356457", 
-  api_secret = "moZBWNgDtlXZ_P1MegHScY3pMUw" 
+cloudinary.config(
+    cloud_name="rp1994",
+    api_key="956419556356457",
+    api_secret="moZBWNgDtlXZ_P1MegHScY3pMUw"
 )
 django_heroku.settings(locals())
