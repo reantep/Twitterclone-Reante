@@ -86,7 +86,7 @@ DATABASES = {  # Edit the DATABASES part to the following
         'ENGINE': 'django.db.backends.mysql',  # We set the engine to MySQL
         'NAME': 'twitter',  # Your database name
         'USER': 'root',  # root is the default user for MySQL
-        'PASSWORD': '',  # Password is blank by default
+        'PASSWORD': 'Josiah2016patt',  # Password is blank by default
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
